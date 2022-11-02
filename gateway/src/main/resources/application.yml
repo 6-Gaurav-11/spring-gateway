@@ -1,0 +1,26 @@
+server:
+  port: 8000
+
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: service
+        uri: lb://service/
+        predicates:
+        - Path=/**
+        
+        
+#      - id: service-two
+#        uri: http://localhost:8002/
+#        predicates:
+#        - Path=/services/two/**
+  
+  application:
+    name: api-gateway
+    
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    
